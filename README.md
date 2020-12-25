@@ -13,7 +13,7 @@ docker container run -d \
 ```
 
 # How to Upgrade
-1. stop and remove your existing brook container.
+1. stop and remove your existing brook_server container.
 2. setup a new brook_server container.
 
 ## ChangeLog
