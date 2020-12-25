@@ -1,22 +1,22 @@
-# brook-docker
-brook docker image. <https://github.com/txthinking/brook>
+# brook_server-docker
+brook_server docker image. <https://github.com/txthinking/brook>
 
 # How to Setup
 ```bash
 docker container run -d \
     --restart=always \
-    --name brook \
-    -e password=hello \ # password for brook
-    -p 18080:9999/tcp \
-    -p 18080:9999/udp \
-    217heidai/brook
+    --name brook_server \
+    -e listen_port=9999 \ # listen port for brook server
+    -e password=hello \ # password for brook server
+    --net host \
+    217heidai/brook_server
 ```
 
 # How to Upgrade
 1. stop and remove your existing brook container.
-2. setup new brook container.
+2. setup a new brook_server container.
 
 ## ChangeLog
 | Date      | Content                                                              |
 |-----------|----------------------------------------------------------------------|
-| 2020.12.04 | brook v20210101 |
+| 2020.12.24 | brook_server v20210101 |
