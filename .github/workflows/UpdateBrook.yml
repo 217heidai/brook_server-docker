@@ -34,10 +34,10 @@ jobs:
       - name: Download Brook
         run: |
           sudo timedatectl set-timezone "$TZ"
-          rm -rf ${{BROOK}}
-          VERSION=$(curl -s "https://api.github.com/repos/${{OWNER}}/${{REPOSITORY}}/releases/latest" | awk -F '"' '/tag_name/{print $4}')
+          rm -rf ${{env.BROOK}}
+          VERSION=$(curl -s "https://api.github.com/repos/${{env.OWNER}}/${{env.REPOSITORY}}/releases/latest" | awk -F '"' '/tag_name/{print $4}')
           echo "VERSION=$VERSION"  >> $GITHUB_ENV
-          wget https://github.com/${{OWNER}}/${{REPOSITORY}}/releases/download/${{VERSION}}/${{BROOK}}
+          wget https://github.com/${{env.OWNER}}/${{env.REPOSITORY}}/releases/download/${{env.VERSION}}/${{env.BROOK}}
 
       - name: Commit Changes
         id: commit
@@ -65,7 +65,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{VERSION}}
+          tag_name: ${{env.VERSION}}
 
       - name: Delete Workflow Runs
         uses: GitRML/delete-workflow-runs@main
