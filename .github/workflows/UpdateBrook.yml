@@ -37,7 +37,7 @@ jobs:
           rm -rf ${{env.BROOK}}
           VERSION=$(curl -s "https://api.github.com/repos/${{env.OWNER}}/${{env.REPOSITORY}}/releases/latest" | awk -F '"' '/tag_name/{print $4}')
           echo "VERSION=$VERSION"  >> $GITHUB_ENV
-          wget https://github.com/${{env.OWNER}}/${{env.REPOSITORY}}/releases/download/${{env.VERSION}}/${{env.BROOK}}
+          wget https://github.com/${{env.OWNER}}/${{env.REPOSITORY}}/releases/download/$VERSION/${{env.BROOK}}
 
       - name: Commit Changes
         id: commit
