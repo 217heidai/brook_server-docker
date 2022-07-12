@@ -13,4 +13,4 @@ RUN set -ex; \
 	ln -s /opt/brook/brook_linux_amd64 /bin/brook; \
 	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime; \
 	echo $TZ > /etc/timezone
-ENTRYPOINT ["sh","-c","brook server -l :$listen_port -p $password"]
+ENTRYPOINT ["sh","-c","brook server --listen :$listen_port --password $password"]
